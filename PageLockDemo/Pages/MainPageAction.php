@@ -6,6 +6,7 @@ use OLOG\HTML;
 use OLOG\InterfaceAction;
 use OLOG\Layouts\AdminLayoutSelector;
 use OLOG\Layouts\InterfacePageTitle;
+use OLOG\PageLock\PageLock;
 
 class MainPageAction implements
     InterfaceAction,
@@ -26,6 +27,10 @@ class MainPageAction implements
 		$html = '';
 
 		// ...
+
+        if (!PageLock::acquirePageLockAndRenderResult()) {
+            return;
+        }
 
 		AdminLayoutSelector::render($html);
 	}
