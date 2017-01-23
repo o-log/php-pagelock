@@ -1,0 +1,17 @@
+{
+  "name": "o-log/php-pagelock",
+  "minimum-stability": "dev",
+  "require" : {
+    "o-log/php-model" : "6.*",
+    "o-log/php-lib" : "1.*",
+    "o-log/php-layouts" : "1.*",
+    "o-log/php-auth" : "2.*",
+    "o-log/php-html" : "1.*"
+  },
+  "autoload" : {
+    "psr-0" : {
+      "OLOG" : "",
+      "PageLockDemo" : ""
+    }
+  }
+}
