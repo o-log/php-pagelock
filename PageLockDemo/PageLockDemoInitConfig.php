@@ -19,7 +19,7 @@ class PageLockDemoInitConfig
 
         DBConfig::setDBSettingsObj(
             AuthConstants::DB_NAME_PHPAUTH,
-            new DBSettings('localhost', 'db_pagelock', 'root', '1', 'vendor/o-log/php-pagelock/db_pagelock.sql')
+            new DBSettings('localhost', 'db_pagelock', 'root', '1', 'vendor/o-log/php-auth/db_phpauth.sql')
         );
 
         CacheConfig::addServerSettingsObj(new MemcacheServerSettings('localhost', 11211));
