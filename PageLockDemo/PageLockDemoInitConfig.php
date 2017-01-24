@@ -10,6 +10,7 @@ use OLOG\Cache\MemcacheServerSettings;
 use OLOG\DB\DBConfig;
 use OLOG\DB\DBSettings;
 use OLOG\Layouts\LayoutsConfig;
+use OLOG\PageLock\PageLockConstants;
 
 class PageLockDemoInitConfig
 {
@@ -20,6 +21,11 @@ class PageLockDemoInitConfig
         DBConfig::setDBSettingsObj(
             AuthConstants::DB_NAME_PHPAUTH,
             new DBSettings('localhost', 'db_pagelock', 'root', '1', 'vendor/o-log/php-auth/db_phpauth.sql')
+        );
+
+        DBConfig::setDBSettingsObj(
+            PageLockConstants::DB_NAME_PAGELOCK,
+            new DBSettings('localhost', 'db_pagelock', 'root', '1')
         );
 
         CacheConfig::addServerSettingsObj(new MemcacheServerSettings('localhost', 11211));
