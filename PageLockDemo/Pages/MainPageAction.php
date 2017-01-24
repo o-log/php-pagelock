@@ -2,7 +2,6 @@
 
 namespace PageLockDemo\Pages;
 
-use OLOG\HTML;
 use OLOG\InterfaceAction;
 use OLOG\Layouts\AdminLayoutSelector;
 use OLOG\Layouts\InterfacePageTitle;
@@ -24,14 +23,17 @@ class MainPageAction implements
 
 	public function action()
 	{
-		$html = '';
-
-		// ...
-
+        ob_start();
         if (!PageLock::acquirePageLockAndRenderResult()) {
+            // страница уже заблокирована другим пользователем
+            $page_lock_html = ob_get_clean();
+            AdminLayoutSelector::render($page_lock_html);
             return;
         }
+        // текущий пользователь заблокировал страницу.
+        $page_lock_html = ob_get_clean();
 
-		AdminLayoutSelector::render($html);
+
+		AdminLayoutSelector::render($page_lock_html);
 	}
 }

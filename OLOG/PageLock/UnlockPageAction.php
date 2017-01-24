@@ -1,22 +1,22 @@
 <?php
 
-namespace PageLock;
+namespace OLOG\PageLock;
 
 use OLOG\Auth\Auth;
 use OLOG\Cache\CacheWrapper;
 use OLOG\Exits;
+use OLOG\InterfaceAction;
 use OLOG\PageLock\PageLock;
 use OLOG\PageLock\Permissions;
 
-class UnlockPageAction
+class UnlockPageAction implements InterfaceAction
 {
     public function url()
     {
         return '/page-lock/unlock';
     }
 
-    public function action()
-    {
+    public function action() {
         Exits::exit403If(!Auth::currentUserHasAnyOfPermissions([Permissions::PERMISSION_PAGELOCK_DROP]));
 
         // TODO: rewrite with postaccess
@@ -41,6 +41,4 @@ class UnlockPageAction
             echo json_encode(false);
         }
     }
-
-
 }
