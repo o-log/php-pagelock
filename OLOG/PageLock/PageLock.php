@@ -110,7 +110,7 @@ class PageLock {
             if (response === false) {
                 clearInterval(pageLockInterval);
 
-                $('body *').prop({ onclick: '' }).unbind('click').click(function(e) {
+                $('section.content *').prop({ onclick: '' }).unbind('click').click(function(e) {
                     e.preventDefault();
                     return false;
                 });
